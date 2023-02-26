@@ -31,7 +31,7 @@ Default.args = {
     preheading: 'better career',
     heading: 'Prepare The Journey',
     paragraph:
-      'We do really care to our students’ future career so it would be good if you are taking a quick interview',
+      'We do really care to our students future career so it would be good if you are taking a quick interview',
   },
   image: '/images/image-2.jpg',
   number: { text: '1.', className: 'bg-yellow' },
