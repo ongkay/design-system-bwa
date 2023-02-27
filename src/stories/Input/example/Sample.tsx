@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
-import Input from "../../../components/Input";
+import Input from '../../../components/Input'
 
-type Props = {};
+type Props = {}
 
 function Sample({}: Props) {
   return (
@@ -14,7 +14,7 @@ function Sample({}: Props) {
       name="email"
       type="email"
     />
-  );
+  )
 }
 
-export default Sample;
+export default Sample

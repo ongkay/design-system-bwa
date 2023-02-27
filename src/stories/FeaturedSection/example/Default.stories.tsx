@@ -1,11 +1,11 @@
 // FeaturedSection.stories.ts|tsx
 
-import React from 'react';
+import React from 'react'
 
-import { ComponentMeta } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react'
 
-import FeaturedSection from '../../../components/FeaturedSection';
-import Button from '../../../components/Button';
+import FeaturedSection from '../../../components/FeaturedSection'
+import Button from '../../../components/Button'
 
 export default {
   /* 👇 The title prop is optional.
@@ -14,9 +14,9 @@ export default {
    */
   title: 'Components/FeaturedSection/Example',
   component: FeaturedSection,
-} as ComponentMeta<typeof FeaturedSection>;
+} as ComponentMeta<typeof FeaturedSection>
 
-export const Default = (args: any) => <FeaturedSection {...args} />;
+export const Default = (args: any) => <FeaturedSection {...args} />
 Default.args = {
   badge: {
     title: 'Interview',
@@ -35,4 +35,4 @@ Default.args = {
   },
   image: '/images/image-2.jpg',
   number: { text: '1.', className: 'bg-yellow' },
-};
+}

@@ -1,76 +1,69 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState } from 'react'
 
 type Props = {
-  id: string;
-  type: "text" | "number" | "email" | "tel" | "date" | "file";
-  name: string;
+  id: string
+  type: 'text' | 'number' | 'email' | 'tel' | 'date' | 'file'
+  name: string
 
-  state?: "success" | "loading";
-  wrapperClassName?: string;
-  label?: ReactNode;
-  accept?: string;
-  readOnly?: boolean;
-  isDisabled?: boolean;
-  isLoading?: boolean;
-  inputClassName?: string;
-  placeholder?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
-};
+  state?: 'success' | 'loading'
+  wrapperClassName?: string
+  label?: ReactNode
+  accept?: string
+  readOnly?: boolean
+  isDisabled?: boolean
+  isLoading?: boolean
+  inputClassName?: string
+  placeholder?: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
+}
 
-const fileAcceptImagesOnly = [
-  "image/png",
-  "image/gif",
-  "image/jpeg",
-  "image/*",
-];
+const fileAcceptImagesOnly = ['image/png', 'image/gif', 'image/jpeg', 'image/*']
 
 function Input(props: Props) {
-  let { state } = props;
-  if (props.isLoading) state = "loading";
+  let { state } = props
+  if (props.isLoading) state = 'loading'
 
-  const [blobImage, setBlobImage] = useState<string | null>(null);
+  const [blobImage, setBlobImage] = useState<string | null>(null)
 
-  const wrapperClassName = ["flex flex-col", props.wrapperClassName];
+  const wrapperClassName = ['flex flex-col', props.wrapperClassName]
 
   let inputClassName = [
-    "w-full appearance-none font-medium py-2 px-5 rounded-full border border-soft-grey focus:border-purple focus:outline-none valid:disabled:bg-soft-grey",
+    'w-full appearance-none font-medium py-2 px-5 rounded-full border border-soft-grey focus:border-purple focus:outline-none valid:disabled:bg-soft-grey',
     props.inputClassName,
-  ];
+  ]
 
   const isFileAcceptImageOnly =
-    props.type === "file" &&
-    props.accept
-      ?.split(",")
-      .some((item) => fileAcceptImagesOnly.includes(item));
+    props.type === 'file' &&
+    props.accept?.split(',').some((item) => fileAcceptImagesOnly.includes(item))
 
-  let RenderInputImage = null;
+  let RenderInputImage = null
 
   function onChangeImage(event: React.ChangeEvent<HTMLInputElement>) {
-    const result = (event.target as HTMLInputElement).files;
+    const result = (event.target as HTMLInputElement).files
 
-    let file;
+    let file
 
     if (result) {
-      file = result[0];
+      file = result[0]
       if (file) {
-        const image = URL.createObjectURL(file);
-        setBlobImage(image);
+        const image = URL.createObjectURL(file)
+        setBlobImage(image)
       }
     }
   }
 
   function onChange(event: React.ChangeEvent<HTMLInputElement>) {
-    props.onChange && props.onChange(event);
+    props.onChange && props.onChange(event)
 
-    if (isFileAcceptImageOnly) onChangeImage(event);
+    if (isFileAcceptImageOnly) onChangeImage(event)
   }
 
   function fnRemoveBlobImage() {
-    if (blobImage) setBlobImage(null);
+    if (blobImage) setBlobImage(null)
   }
 
-  if (props.type === "file" && isFileAcceptImageOnly) {
-    inputClassName = ["hidden"];
+  if (props.type === 'file' && isFileAcceptImageOnly) {
+    inputClassName = ['hidden']
 
     RenderInputImage = (
       <div className="w-28 h-28 relative">
@@ -113,19 +106,19 @@ function Input(props: Props) {
         <label
           htmlFor={props.id}
           className={[
-            "absolute left-1/2 bottom-0 cursor-pointer transform -translate-x-1/2 translate-y-1/2 rounded-full text-white w-6 h-6 flex items-center justify-center",
-            blobImage ? "bg-red" : "bg-green",
-          ].join(" ")}
+            'absolute left-1/2 bottom-0 cursor-pointer transform -translate-x-1/2 translate-y-1/2 rounded-full text-white w-6 h-6 flex items-center justify-center',
+            blobImage ? 'bg-red' : 'bg-green',
+          ].join(' ')}
           onClick={fnRemoveBlobImage}
         >
-          {blobImage ? "-" : "+"}
+          {blobImage ? '-' : '+'}
         </label>
       </div>
-    );
+    )
   }
 
   return (
-    <div className={wrapperClassName.join(" ")}>
+    <div className={wrapperClassName.join(' ')}>
       {props.label && (
         <label htmlFor={props.id} className="mb-1">
           {props.label}
@@ -138,18 +131,18 @@ function Input(props: Props) {
           name={props.name}
           readOnly={props.readOnly}
           disabled={props.isDisabled || props.isLoading}
-          className={inputClassName.join(" ")}
-          placeholder={props.placeholder || "Your placeholder goes here"}
+          className={inputClassName.join(' ')}
+          placeholder={props.placeholder || 'Your placeholder goes here'}
           onChange={onChange}
         />
 
         {RenderInputImage}
 
-        {state === "loading" && (
+        {state === 'loading' && (
           <span
             className={[
-              "transition-all duration-300 absolute right-0 top-0 bottom-0 z-10 inline-flex items-center justify-center opacity-100 aspect-square",
-            ].join(" ")}
+              'transition-all duration-300 absolute right-0 top-0 bottom-0 z-10 inline-flex items-center justify-center opacity-100 aspect-square',
+            ].join(' ')}
           >
             <svg
               viewBox="0 0 28 28"
@@ -173,11 +166,11 @@ function Input(props: Props) {
           </span>
         )}
 
-        {state === "success" && (
+        {state === 'success' && (
           <span
             className={[
-              "transition-all duration-300 absolute right-0 top-0 bottom-0 z-10 inline-flex items-center justify-center opacity-100 aspect-square ",
-            ].join(" ")}
+              'transition-all duration-300 absolute right-0 top-0 bottom-0 z-10 inline-flex items-center justify-center opacity-100 aspect-square ',
+            ].join(' ')}
           >
             <span className="w-5 h-5 inline-flex items-center justify-center bg-green rounded-full p-1">
               <svg viewBox="0 0 12 8" fill="none">
@@ -194,7 +187,7 @@ function Input(props: Props) {
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default Input;
+export default Input

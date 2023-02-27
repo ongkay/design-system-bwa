@@ -1,22 +1,22 @@
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
 type Props = {
   number: {
-    text: ReactNode;
-    className: string;
-  };
+    text: ReactNode
+    className: string
+  }
   content: {
-    preheading: string;
-    heading: string;
-    paragraph: string;
-  };
-  button: ReactNode;
+    preheading: string
+    heading: string
+    paragraph: string
+  }
+  button: ReactNode
   badge: {
-    title: string;
-    content: string;
-  };
-  image: string | ReactNode;
-};
+    title: string
+    content: string
+  }
+  image: string | ReactNode
+}
 
 function FeaturedSection({ number, content, button, badge, image }: Props) {
   return (
@@ -29,7 +29,9 @@ function FeaturedSection({ number, content, button, badge, image }: Props) {
           <h2 className="text-navy font-semibold text-[30px] mb-5">
             {content.heading || 'Heading'}
           </h2>
-          <h3 className="mb-8 leading-8 text-grey">{content.paragraph || 'Paragraph'}</h3>
+          <h3 className="mb-8 leading-8 text-grey">
+            {content.paragraph || 'Paragraph'}
+          </h3>
           {button}
         </div>
         <div className="relative md:group-odd:order-1 md:group-even:order-2">
@@ -44,7 +46,11 @@ function FeaturedSection({ number, content, button, badge, image }: Props) {
           <div className="absolute bottom-0 right-0 z-10 w-56 p-4 transform translate-x-4 translate-y-4 bg-white rounded-xl md:translate-x-1/4 xl:translate-x-1/2 xl:translate-y-1/2">
             <span className="flex items-center mb-2 gap-x-2">
               <span className="flex items-center justify-center w-5 h-5 p-1 rounded-full bg-green">
-                <svg viewBox="0 0 12 8" fill="none" preserveAspectRatio="xMidYMid meet">
+                <svg
+                  viewBox="0 0 12 8"
+                  fill="none"
+                  preserveAspectRatio="xMidYMid meet"
+                >
                   <path
                     d="M1.83325 4L4.46483 6.5L10.1666 1.5"
                     className="stroke-white"
@@ -59,12 +65,16 @@ function FeaturedSection({ number, content, button, badge, image }: Props) {
             <p className="hidden text-sm text-grey md:block">{badge.content}</p>
           </div>
           <div className="relative max-w-full w-[240px] h-[340px] xl:w-[340px] xl:h-[440px] rounded-tr-[59px] rounded-bl-[59px] rounded-tl-3xl rounded-br-3xl overflow-hidden">
-            {typeof image === 'string' ? <img src={image} alt={badge.title} /> : image}
+            {typeof image === 'string' ? (
+              <img src={image} alt={badge.title} />
+            ) : (
+              image
+            )}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default FeaturedSection;
+export default FeaturedSection

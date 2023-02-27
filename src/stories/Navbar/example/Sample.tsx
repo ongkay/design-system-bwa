@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
-import Navbar from "../../../components/Navbar";
-import Button from "../../../components/Button";
-import Link from "../../../components/Link";
+import Navbar from '../../../components/Navbar'
+import Button from '../../../components/Button'
+import Link from '../../../components/Link'
 
-type Props = {};
+type Props = {}
 
 function Sample({}: Props) {
   return (
@@ -20,7 +20,7 @@ function Sample({}: Props) {
         </>
       }
       pathname="/program"
-      className={{ active: "text-purple", idle: "text-navy" }}
+      className={{ active: 'text-purple', idle: 'text-navy' }}
     >
       <Link href="/program">
         <a>Program</a>
@@ -38,7 +38,7 @@ function Sample({}: Props) {
         <a>Business</a>
       </Link>
     </Navbar>
-  );
+  )
 }
 
-export default Sample;
+export default Sample

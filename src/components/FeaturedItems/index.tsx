@@ -1,15 +1,15 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 type TFeature = {
-  key: string;
-  title: string;
-  paragraph: string;
-  icon: ReactNode;
-};
+  key: string
+  title: string
+  paragraph: string
+  icon: ReactNode
+}
 
 type Props = {
-  features: TFeature[];
-};
+  features: TFeature[]
+}
 
 function FeaturedItems({ features }: Props) {
   return (
@@ -25,10 +25,10 @@ function FeaturedItems({ features }: Props) {
               <p className="text-grey">{feature.paragraph}</p>
             </div>
           </div>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
 
-export default FeaturedItems;
+export default FeaturedItems

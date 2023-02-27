@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import FeaturedSection from '../../../components/FeaturedSection';
-import Button from '../../../components/Button';
+import FeaturedSection from '../../../components/FeaturedSection'
+import Button from '../../../components/Button'
 
-type Props = {};
+type Props = {}
 
 function Sample({}: Props) {
   return (
@@ -68,7 +68,7 @@ function Sample({}: Props) {
         number={{ text: '3.', className: 'bg-green' }}
       />
     </div>
-  );
+  )
 }
 
-export default Sample;
+export default Sample

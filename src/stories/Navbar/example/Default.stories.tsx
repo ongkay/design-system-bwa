@@ -1,21 +1,21 @@
 // Navbar.stories.ts|tsx
 
-import React from "react";
+import React from 'react'
 
-import { ComponentMeta } from "@storybook/react";
+import { ComponentMeta } from '@storybook/react'
 
-import Navbar from "../../../components/Navbar";
-import Button from "../../../components/Button";
-import Link from "../../../components/Link";
+import Navbar from '../../../components/Navbar'
+import Button from '../../../components/Button'
+import Link from '../../../components/Link'
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: "Components/Navbar/Example",
+  title: 'Components/Navbar/Example',
   component: Navbar,
-} as ComponentMeta<typeof Navbar>;
+} as ComponentMeta<typeof Navbar>
 
 export const Default = (args: any) => (
   <Navbar {...args}>
@@ -35,7 +35,7 @@ export const Default = (args: any) => (
       <a>Business</a>
     </Link>
   </Navbar>
-);
+)
 
 Default.args = {
   cta: (
@@ -48,6 +48,6 @@ Default.args = {
       </Button>
     </>
   ),
-  pathname: "/program",
-  className: { active: "text-purple", idle: "text-navy" },
-};
+  pathname: '/program',
+  className: { active: 'text-purple', idle: 'text-navy' },
+}

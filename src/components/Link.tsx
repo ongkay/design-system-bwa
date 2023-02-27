@@ -1,12 +1,12 @@
-import { ReactElement, forwardRef, cloneElement } from "react";
+import { ReactElement, forwardRef, cloneElement } from 'react'
 
 type Props = {
-  href: string;
-  children: ReactElement;
-};
+  href: string
+  children: ReactElement
+}
 
 const Link = forwardRef((props: Props, ref: any) =>
   cloneElement(props.children, { ref, href: props.href })
-);
+)
 
-export default Link;
+export default Link

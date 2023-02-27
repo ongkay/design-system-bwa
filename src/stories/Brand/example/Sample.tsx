@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
-import Brand from "../../../components/Brand";
+import Brand from '../../../components/Brand'
 
-type Props = {};
+type Props = {}
 
 function Sample({}: Props) {
-  return <Brand className="w-32 h-16" />;
+  return <Brand className="w-32 h-16" />
 }
 
-export default Sample;
+export default Sample

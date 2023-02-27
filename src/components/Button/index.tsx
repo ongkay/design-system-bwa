@@ -1,31 +1,31 @@
-import configs from "./configs";
-import { cloneElement } from "react";
+import configs from './configs'
+import { cloneElement } from 'react'
 
 type Props = {
-  children: JSX.Element;
-  state: "primary" | "secondary" | "alternative" | "disabled" | "loading";
-  className?: string;
-  isDisabled?: boolean;
-  isLoading?: boolean;
-};
+  children: JSX.Element
+  state: 'primary' | 'secondary' | 'alternative' | 'disabled' | 'loading'
+  className?: string
+  isDisabled?: boolean
+  isLoading?: boolean
+}
 
 function Button(props: Props) {
-  let { state } = props;
-  if (props.isDisabled) state = "disabled";
-  if (props.isLoading) state = "loading";
+  let { state } = props
+  if (props.isDisabled) state = 'disabled'
+  if (props.isLoading) state = 'loading'
 
   const className = [
-    "py-2 px-6 font-medium rounded-full relative appearance-none focus:outline-none transition-all duration-300 inline-flex items-center select-none overflow-hidden",
-    configs?.state?.[state] || "",
-    props.className || "",
-  ];
+    'py-2 px-6 font-medium rounded-full relative appearance-none focus:outline-none transition-all duration-300 inline-flex items-center select-none overflow-hidden',
+    configs?.state?.[state] || '',
+    props.className || '',
+  ]
 
-  let returnChildren = props.children;
-  let returnContent = props.children.props.children;
+  let returnChildren = props.children
+  let returnContent = props.children.props.children
 
-  if (typeof props.children?.type === "object") {
-    returnChildren = props.children.props.children;
-    returnContent = props.children.props.children.props.children;
+  if (typeof props.children?.type === 'object') {
+    returnChildren = props.children.props.children
+    returnContent = props.children.props.children.props.children
   }
 
   const children = cloneElement(returnChildren, {
@@ -35,19 +35,19 @@ function Button(props: Props) {
       <>
         <span
           className={[
-            "transition-all duration-300 inline-flex items-center",
+            'transition-all duration-300 inline-flex items-center',
             props.isLoading
-              ? "-top-full opacity-0 invisible"
-              : "top-0 opacity-100 visible",
-          ].join(" ")}
+              ? '-top-full opacity-0 invisible'
+              : 'top-0 opacity-100 visible',
+          ].join(' ')}
         >
           {returnContent}
         </span>
         <span
           className={[
-            "transition-all duration-300 absolute left-0 right-0 bottom-0 z-10 inline-flex items-center justify-center",
-            props.isLoading ? "top-0 opacity-100" : "-top-full opacity-0",
-          ].join(" ")}
+            'transition-all duration-300 absolute left-0 right-0 bottom-0 z-10 inline-flex items-center justify-center',
+            props.isLoading ? 'top-0 opacity-100' : '-top-full opacity-0',
+          ].join(' ')}
         >
           <svg
             className="animate-spin w-5 h-5"
@@ -72,11 +72,11 @@ function Button(props: Props) {
         </span>
       </>
     ),
-  });
+  })
 
   return cloneElement(children, {
-    className: className.join(" "),
-  });
+    className: className.join(' '),
+  })
 }
 
-export default Button;
+export default Button
