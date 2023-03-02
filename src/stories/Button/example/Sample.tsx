@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import Button from '../../../components/Button'
+import Button from '../../../components/Button';
 
-type Props = {}
+type Props = {};
 
 function Sample({}: Props) {
   return (
     <Button state="primary">
       <button onClick={() => console.log('hi')}>Okay, got it</button>
     </Button>
-  )
+  );
 }
 
-export default Sample
+export default Sample;

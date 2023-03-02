@@ -1,11 +1,8 @@
-import React from 'react'
+import React from 'react';
+import Badge from '../../../components/Badge';
 
-import Badge from '../../../components/Badge'
-
-type Props = {}
-
-function Sample({}: Props) {
-  return <Badge state="success">Succes Sample</Badge>
+function Sample() {
+  return <Badge state={'success'}>badge</Badge>;
 }
 
-export default Sample
+export default Sample;
