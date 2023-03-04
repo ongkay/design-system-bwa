@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
-import ButtonFlowbite from '.';
+// import {ButtonGroup, ButtonFlowbite } from '.';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
+import { ButtonFlowbite, ButtonGroup } from '.';
 
 export default {
   title: 'Components/ButtonFlowbiteku/Example',
@@ -91,10 +92,18 @@ export const WithLabel = (args: any) => (
   </div>
 );
 
-export const ButtonGroup = (args: any) => (
-  <div className="flex flex-wrap items-center">
+export const ButtonGroup1 = (args: any) => (
+  <div className="flex flex-wrap items-center border-4 border-gray-600">
     <ButtonFlowbite group={'start'}>Profile</ButtonFlowbite>
     <ButtonFlowbite group={'middle'}>Settings</ButtonFlowbite>
     <ButtonFlowbite group={'end'}>Messages</ButtonFlowbite>
   </div>
+);
+
+export const ButtonGroup2 = (args: any) => (
+  <ButtonGroup>
+    <ButtonFlowbite>Profile</ButtonFlowbite>
+    <ButtonFlowbite>Settings</ButtonFlowbite>
+    <ButtonFlowbite>Messages</ButtonFlowbite>
+  </ButtonGroup>
 );

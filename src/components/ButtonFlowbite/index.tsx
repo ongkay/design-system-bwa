@@ -1,7 +1,15 @@
 import { cva, VariantProps } from 'class-variance-authority';
-import { ComponentProps, ReactNode } from 'react';
+// import { ComponentProps, ReactNode } from 'react';
 import { cn } from 'lib';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import type {
+  ComponentProps,
+  ReactNode,
+  FC,
+  PropsWithChildren,
+  ReactElement,
+} from 'react';
+import { Children, cloneElement, useMemo } from 'react';
 
 const buttonStyles = cva(
   'inline-flex items-center justify-center font-medium rounded-lg text-white focus:ring-4',
@@ -67,7 +75,7 @@ interface Props
   isLoading?: boolean;
 }
 
-const ButtonFlowbite = ({
+export const ButtonFlowbite = ({
   state = 'primary',
   size = 'md',
   pill,
@@ -136,4 +144,38 @@ const ButtonFlowbite = ({
   );
 };
 
-export default ButtonFlowbite;
+// export default ButtonFlowbite;
+
+interface ButtonGroupProps
+  extends ComponentProps<'div'>,
+    PropsWithChildren {}
+export const ButtonGroup: FC<ButtonGroupProps> = ({
+  children,
+  className,
+  ...props
+}: ButtonGroupProps) => {
+  const items = useMemo(
+    () =>
+      Children.map(children as ReactElement<Props>[], (child, index) =>
+        cloneElement(child, {
+          group:
+            index === 0
+              ? 'start'
+              : index === (children as ReactElement<Props>[]).length - 1
+              ? 'end'
+              : 'middle',
+        }),
+      ),
+    [children],
+  );
+
+  return (
+    <div
+      className={cn('inline-flex items-center justify-center', className)}
+      role="group"
+      {...props}
+    >
+      {items}
+    </div>
+  );
+};
