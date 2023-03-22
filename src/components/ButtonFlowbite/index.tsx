@@ -1,13 +1,13 @@
 import { cva, VariantProps } from 'class-variance-authority';
-// import { ComponentProps, ReactNode } from 'react';
 import { cn } from 'lib';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import type {
+import {
   ComponentProps,
   ReactNode,
   FC,
   PropsWithChildren,
   ReactElement,
+  forwardRef,
 } from 'react';
 import { Children, cloneElement, useMemo } from 'react';
 
@@ -64,7 +64,7 @@ const buttonStyles = cva(
 type ButtonOrLinkProps = ComponentProps<'button'> & ComponentProps<'a'>;
 interface Props
   extends ButtonOrLinkProps,
-    // extends Omit<ButtonOrLinkProps, 'disabled'>,
+    // extends Omit<ButtonOrLinkProps, 'disabled' | 'ref'>,
     VariantProps<typeof buttonStyles> {
   href?: string;
   pill?: boolean;
@@ -75,74 +75,79 @@ interface Props
   isLoading?: boolean;
 }
 
-export const ButtonFlowbite = ({
-  state = 'primary',
-  size = 'md',
-  pill,
-  fullSized,
-  className,
-  href,
-  children,
-  label,
-  disabled,
-  isLoading,
-  group,
-
-  ...props
-}: Props) => {
-  if (isLoading) disabled = true;
-
-  const clsname = cn(
-    buttonStyles({
-      state,
-      size,
+export const ButtonFlowbite = forwardRef<HTMLButtonElement, Props>(
+  (
+    {
+      state = 'primary',
+      size = 'md',
       pill,
       fullSized,
       className,
+      href,
+      children,
+      label,
       disabled,
+      isLoading,
       group,
-    }),
-  );
 
-  const buttonStyle = (
-    <>
-      {isLoading ? (
-        <span className="inline-flex items-center justify-center">
-          <AiOutlineLoading3Quarters className="w-4 h-4 mr-2 animate-spin" />
-          Loading...
-        </span>
-      ) : (
-        <>
-          {/* {typeof children !== 'undefined' && children} */}
-          {children}
-          {label && (
-            <span
-              className={
-                'ml-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-200 text-xs font-semibold text-blue-800'
-              }
-            >
-              {label}
-            </span>
-          )}
-        </>
-      )}
-    </>
-  );
+      ...props
+    },
+    ref,
+  ) => {
+    if (isLoading) disabled = true;
 
-  if (href) {
-    return (
-      <a href={href} className={clsname} {...props}>
-        {buttonStyle}
-      </a>
+    const clsname = cn(
+      buttonStyles({
+        state,
+        size,
+        pill,
+        fullSized,
+        className,
+        disabled,
+        group,
+      }),
     );
-  }
 
-  return (
-    <button disabled={disabled} className={clsname} {...props}>
-      {buttonStyle}
-    </button>
-  );
-};
+    const buttonStyle = (
+      <>
+        {isLoading ? (
+          <span className="inline-flex items-center justify-center">
+            <AiOutlineLoading3Quarters className="w-4 h-4 mr-2 animate-spin" />
+            Loading...
+          </span>
+        ) : (
+          <>
+            {/* {typeof children !== 'undefined' && children} */}
+            {children}
+            {label && (
+              <span
+                className={
+                  'ml-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-200 text-xs font-semibold text-blue-800'
+                }
+              >
+                {label}
+              </span>
+            )}
+          </>
+        )}
+      </>
+    );
+
+    if (href) {
+      return (
+        <a href={href} className={clsname} {...props}>
+          {buttonStyle}
+        </a>
+      );
+    }
+
+    return (
+      <button disabled={disabled} className={clsname} ref={ref} {...props}>
+        {buttonStyle}
+      </button>
+    );
+  },
+);
 
 // export default ButtonFlowbite;
 

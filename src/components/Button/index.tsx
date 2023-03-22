@@ -1,31 +1,31 @@
-import configs from './configs'
-import { cloneElement } from 'react'
+import configs from './configs';
+import { cloneElement } from 'react';
 
 type Props = {
-  children: JSX.Element
-  state: 'primary' | 'secondary' | 'alternative' | 'disabled' | 'loading'
-  className?: string
-  isDisabled?: boolean
-  isLoading?: boolean
-}
+  children: JSX.Element;
+  state: 'primary' | 'secondary' | 'alternative' | 'disabled' | 'loading';
+  className?: string;
+  isDisabled?: boolean;
+  isLoading?: boolean;
+};
 
 function Button(props: Props) {
-  let { state } = props
-  if (props.isDisabled) state = 'disabled'
-  if (props.isLoading) state = 'loading'
+  let { state } = props;
+  if (props.isDisabled) state = 'disabled';
+  if (props.isLoading) state = 'loading';
 
   const className = [
-    'py-2 px-6 font-medium rounded-full relative appearance-none focus:outline-none transition-all duration-300 inline-flex items-center select-none overflow-hidden',
+    'relative inline-flex items-center px-6 py-2 overflow-hidden font-medium transition-all duration-300 rounded-full appearance-none select-none focus:outline-none',
     configs?.state?.[state] || '',
     props.className || '',
-  ]
+  ];
 
-  let returnChildren = props.children
-  let returnContent = props.children.props.children
+  let returnChildren = props.children;
+  let returnContent = props.children.props.children;
 
   if (typeof props.children?.type === 'object') {
-    returnChildren = props.children.props.children
-    returnContent = props.children.props.children.props.children
+    returnChildren = props.children.props.children;
+    returnContent = props.children.props.children.props.children;
   }
 
   const children = cloneElement(returnChildren, {
@@ -50,7 +50,7 @@ function Button(props: Props) {
           ].join(' ')}
         >
           <svg
-            className="animate-spin w-5 h-5"
+            className="w-5 h-5 animate-spin"
             viewBox="0 0 28 28"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -72,11 +72,11 @@ function Button(props: Props) {
         </span>
       </>
     ),
-  })
+  });
 
   return cloneElement(children, {
     className: className.join(' '),
-  })
+  });
 }
 
-export default Button
+export default Button;

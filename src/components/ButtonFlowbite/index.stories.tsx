@@ -1,5 +1,4 @@
 import { Meta } from '@storybook/react';
-// import {ButtonGroup, ButtonFlowbite } from '.';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 import { ButtonFlowbite, ButtonGroup } from '.';
 
@@ -22,9 +21,7 @@ export const ButtonVarians = (args: any) => (
   <div className="flex flex-wrap items-center gap-2">
     <ButtonFlowbite state={'primary'}>primary</ButtonFlowbite>
     <ButtonFlowbite state={'secondary'}>secondary</ButtonFlowbite>
-    <ButtonFlowbite state={'danger'} disabled>
-      danger
-    </ButtonFlowbite>
+    <ButtonFlowbite state={'danger'}>danger</ButtonFlowbite>
   </div>
 );
 
@@ -89,14 +86,6 @@ export const WithLabel = (args: any) => (
       Button with label
     </ButtonFlowbite>
     <ButtonFlowbite label={27}>Pesan</ButtonFlowbite>
-  </div>
-);
-
-export const ButtonGroup1 = (args: any) => (
-  <div className="flex flex-wrap items-center border-4 border-gray-600">
-    <ButtonFlowbite group={'start'}>Profile</ButtonFlowbite>
-    <ButtonFlowbite group={'middle'}>Settings</ButtonFlowbite>
-    <ButtonFlowbite group={'end'}>Messages</ButtonFlowbite>
   </div>
 );
 
