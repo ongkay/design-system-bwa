@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 import { ButtonFlowbite, ButtonGroup } from '.';
+import { useRef } from 'react';
 
 export default {
   title: 'Components/ButtonFlowbiteku/Example',
@@ -17,11 +18,26 @@ Default.args = {
   children: 'Button',
 };
 
+function Sampel() {
+  const ref = useRef(null);
+  console.log(ref.current);
+  return (
+    <ButtonFlowbite
+      state={'danger'}
+      ref={ref}
+      onClick={() => alert('mantap bro')}
+    >
+      danger
+    </ButtonFlowbite>
+  );
+}
+
 export const ButtonVarians = (args: any) => (
   <div className="flex flex-wrap items-center gap-2">
     <ButtonFlowbite state={'primary'}>primary</ButtonFlowbite>
     <ButtonFlowbite state={'secondary'}>secondary</ButtonFlowbite>
     <ButtonFlowbite state={'danger'}>danger</ButtonFlowbite>
+    <Sampel />
   </div>
 );
 
